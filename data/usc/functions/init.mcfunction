@@ -16,3 +16,5 @@ setblock -18 17 -18 minecraft:redstone_block
 setblock -9 17 -18 minecraft:redstone_block
 setblock -18 17 -4 minecraft:redstone_block
 setblock -9 17 -4 minecraft:redstone_block
+# make sure the box is fully loaded before running preparations
+schedule function usc:prep 1s
