@@ -4,6 +4,7 @@ This is a [data pack](https://minecraft.gamepedia.com/Data_Pack) for [*Minecraft
 
 1. [Set up a Minecraft server](https://minecraft.gamepedia.com/Tutorials/Setting_up_a_server) with a new world and at least the following [server.properties](https://minecraft.gamepedia.com/Server.properties):
     ```
+    allow-flight=true
     enable-command-block=true
     function-permission-level=3
     spawn-protection=0
