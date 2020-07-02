@@ -1,9 +1,6 @@
 # preparations to run after op has been teleported into the box
 # update preparations progress sign
 setblock -16 27 -16 minecraft:birch_wall_sign[facing=north]{Text1:"{\"text\":\"\"}",Text2:"{\"text\":\"setting up…\"}",Text3:"{\"text\":\"ETA: 1 second\"}",Text4:"{\"text\":\"\"}"} replace
-# disable daylight cycle (reenabled at game start)
-gamerule doDaylightCycle false
-time set 0
 # disable command block output because there's a lot of command blocks running periodically #TODO remove once everything has been ported to functions
 gamerule commandBlockOutput false
 # game settings #TODO these should probably be configurable

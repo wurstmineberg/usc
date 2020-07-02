@@ -1,5 +1,8 @@
 # automatically called each time the server is started
 #TODO to improve handling of server crashes, make sure these commands are only run once
+# disable daylight and weather cycles (reenabled at game start)
+gamerule doDaylightCycle false
+gamerule doWeatherCycle false
 #TODO allow enabling announceAdvancements as a setup option
 gamerule announceAdvancements false
 defaultgamemode adventure

@@ -1,3 +1,4 @@
+# called manually by the admin from ingame
 gamemode creative @s
 teleport @s 0 31 0
 # make sure the box is fully loaded before running preparations
