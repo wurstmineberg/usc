@@ -1,4 +1,60 @@
 # Runs once every second but only after game start
+scoreboard players add gameTimer variables 1
+scoreboard players add gameTimerModTenMin variables 1
+execute if score gameTimerModTenMin variables matches 600 run scoreboard players set gameTimerModTenMin variables 0
+# every 10 minutes, no-op teleport everyone for logging purposes
+execute if score gameTimerModTenMin variables matches 0 as @a at @s run teleport ~ ~ ~
+# world border
+execute if score gameTimer variables matches 600 run worldborder set 2601 600
+execute if score gameTimer variables matches 1200 run say MARK 1 DAY IN — border radius: 1300m
+execute if score gameTimer variables matches 1200 run title @a subtitle {"color": "gold", "text": "border radius: 1300m"}
+execute if score gameTimer variables matches 1200 run title @a title {"text": "MARK 1 DAY IN"}
+execute if score gameTimer variables matches 1200 run worldborder set 2451 600
+execute if score gameTimer variables matches 1800 run worldborder set 2301 600
+execute if score gameTimer variables matches 2400 run say MARK 2 DAYS IN — border radius: 1150m
+execute if score gameTimer variables matches 2400 run title @a subtitle {"color": "gold", "text": "border radius: 1150m"}
+execute if score gameTimer variables matches 2400 run title @a title {"text": "MARK 2 DAYS IN"}
+execute if score gameTimer variables matches 2400 run worldborder set 2151 600
+execute if score gameTimer variables matches 3000 run worldborder set 2001 600
+execute if score gameTimer variables matches 3600 run say MARK 3 DAYS IN — border radius: 1000m
+execute if score gameTimer variables matches 3600 run title @a subtitle {"color": "gold", "text": "border radius: 1000m"}
+execute if score gameTimer variables matches 3600 run title @a title {"text": "MARK 3 DAYS IN"}
+execute if score gameTimer variables matches 3600 run worldborder set 1851 600
+execute if score gameTimer variables matches 4200 run worldborder set 1701 600
+execute if score gameTimer variables matches 4800 run say MARK 4 DAYS IN — border radius: 850m
+execute if score gameTimer variables matches 4800 run title @a subtitle {"color": "gold", "text": "border radius: 850m"}
+execute if score gameTimer variables matches 4800 run title @a title {"text": "MARK 4 DAYS IN"}
+execute if score gameTimer variables matches 4800 run worldborder set 1551 600
+execute if score gameTimer variables matches 5400 run worldborder set 1401 600
+execute if score gameTimer variables matches 6000 run say MARK 5 DAYS IN — border radius: 700m
+execute if score gameTimer variables matches 6000 run title @a subtitle {"color": "gold", "text": "border radius: 700m"}
+execute if score gameTimer variables matches 6000 run title @a title {"text": "MARK 5 DAYS IN"}
+execute if score gameTimer variables matches 6000 run worldborder set 1251 600
+execute if score gameTimer variables matches 6600 run worldborder set 1101 600
+execute if score gameTimer variables matches 7200 run say MARK 6 DAYS IN — border radius: 550m
+execute if score gameTimer variables matches 7200 run title @a subtitle {"color": "gold", "text": "border radius: 550m"}
+execute if score gameTimer variables matches 7200 run title @a title {"text": "MARK 6 DAYS IN"}
+execute if score gameTimer variables matches 7200 run worldborder set 951 600
+execute if score gameTimer variables matches 7800 run worldborder set 801 600
+execute if score gameTimer variables matches 8400 run say MARK 7 DAYS IN — border radius: 400m
+execute if score gameTimer variables matches 8400 run title @a subtitle {"color": "gold", "text": "border radius: 400m"}
+execute if score gameTimer variables matches 8400 run title @a title {"text": "MARK 7 DAYS IN"}
+execute if score gameTimer variables matches 8400 run worldborder set 651 600
+execute if score gameTimer variables matches 9000 run worldborder set 501 600
+execute if score gameTimer variables matches 9600 run say MARK 8 DAYS IN — border radius: 250m
+execute if score gameTimer variables matches 9600 run title @a subtitle {"color": "gold", "text": "border radius: 250m"}
+execute if score gameTimer variables matches 9600 run title @a title {"text": "MARK 8 DAYS IN"}
+execute if score gameTimer variables matches 9600 run worldborder set 401 600
+execute if score gameTimer variables matches 10200 run worldborder set 301 600
+execute if score gameTimer variables matches 10800 run say MARK 9 DAYS IN — border radius: 150m
+execute if score gameTimer variables matches 10800 run title @a subtitle {"color": "gold", "text": "border radius: 150m"}
+execute if score gameTimer variables matches 10800 run title @a title {"text": "MARK 9 DAYS IN"}
+execute if score gameTimer variables matches 10800 run worldborder set 251 600
+execute if score gameTimer variables matches 11400 run worldborder set 201 600
+execute if score gameTimer variables matches 12000 run say MARK 10 DAYS IN — border radius: 100m
+execute if score gameTimer variables matches 12000 run title @a subtitle {"color": "gold", "text": "border radius: 100m"}
+execute if score gameTimer variables matches 12000 run title @a title {"text": "MARK 10 DAYS IN"}
+execute if score gameTimer variables matches 12000 run say The border has stopped moving.
 # respawn timer
 scoreboard players set @a[scores={deathsInternal=1..,health=1..},gamemode=survival] respawnTimer 600
 gamemode adventure @a[scores={deathsInternal=1..,health=1..},gamemode=survival]
@@ -11,16 +67,16 @@ execute if entity @p[scores={respawnTimer=0}] run say @a[scores={respawnTimer=0}
 scoreboard players reset @a[gamemode=spectator] respawnTimer
 scoreboard players reset @a[gamemode=survival] respawnTimer
 # update respawn radius to stay inside the world border
-execute if score gameTimer variables matches 0..23999 run spreadplayers 0 0 400 1300 true @a[gamemode=survival,x=-17,dx=34,y=1,dy=34,z=-17,dz=34]
-execute if score gameTimer variables matches 24000..47999 run spreadplayers 0 0 350 1150 true @a[gamemode=survival,x=-17,dx=34,y=1,dy=34,z=-17,dz=34]
-execute if score gameTimer variables matches 48000..71999 run spreadplayers 0 0 300 1000 true @a[gamemode=survival,x=-17,dx=34,y=1,dy=34,z=-17,dz=34]
-execute if score gameTimer variables matches 72000..95999 run spreadplayers 0 0 250 850 true @a[gamemode=survival,x=-17,dx=34,y=1,dy=34,z=-17,dz=34]
-execute if score gameTimer variables matches 96000..119999 run spreadplayers 0 0 200 700 true @a[gamemode=survival,x=-17,dx=34,y=1,dy=34,z=-17,dz=34]
-execute if score gameTimer variables matches 120000..143999 run spreadplayers 0 0 150 550 true @a[gamemode=survival,x=-17,dx=34,y=1,dy=34,z=-17,dz=34]
-execute if score gameTimer variables matches 144000..167999 run spreadplayers 0 0 100 400 true @a[gamemode=survival,x=-17,dx=34,y=1,dy=34,z=-17,dz=34]
-execute if score gameTimer variables matches 168000..191999 run spreadplayers 0 0 50 250 true @a[gamemode=survival,x=-17,dx=34,y=1,dy=34,z=-17,dz=34]
-execute if score gameTimer variables matches 192000..215999 run spreadplayers 0 0 25 150 true @a[gamemode=survival,x=-17,dx=34,y=1,dy=34,z=-17,dz=34]
-execute if score gameTimer variables matches 216000.. run spreadplayers 0 0 10 100 true @a[gamemode=survival,x=-17,dx=34,y=1,dy=34,z=-17,dz=34]
+execute if score gameTimer variables matches 0..1199 run spreadplayers 0 0 400 1300 true @a[gamemode=survival,x=-17,dx=34,y=1,dy=34,z=-17,dz=34]
+execute if score gameTimer variables matches 1200..2399 run spreadplayers 0 0 350 1150 true @a[gamemode=survival,x=-17,dx=34,y=1,dy=34,z=-17,dz=34]
+execute if score gameTimer variables matches 2400..3599 run spreadplayers 0 0 300 1000 true @a[gamemode=survival,x=-17,dx=34,y=1,dy=34,z=-17,dz=34]
+execute if score gameTimer variables matches 3600..4799 run spreadplayers 0 0 250 850 true @a[gamemode=survival,x=-17,dx=34,y=1,dy=34,z=-17,dz=34]
+execute if score gameTimer variables matches 4800..5999 run spreadplayers 0 0 200 700 true @a[gamemode=survival,x=-17,dx=34,y=1,dy=34,z=-17,dz=34]
+execute if score gameTimer variables matches 6000..7199 run spreadplayers 0 0 150 550 true @a[gamemode=survival,x=-17,dx=34,y=1,dy=34,z=-17,dz=34]
+execute if score gameTimer variables matches 7299..8399 run spreadplayers 0 0 100 400 true @a[gamemode=survival,x=-17,dx=34,y=1,dy=34,z=-17,dz=34]
+execute if score gameTimer variables matches 8400..9599 run spreadplayers 0 0 50 250 true @a[gamemode=survival,x=-17,dx=34,y=1,dy=34,z=-17,dz=34]
+execute if score gameTimer variables matches 9600..10799 run spreadplayers 0 0 25 150 true @a[gamemode=survival,x=-17,dx=34,y=1,dy=34,z=-17,dz=34]
+execute if score gameTimer variables matches 10800.. run spreadplayers 0 0 10 100 true @a[gamemode=survival,x=-17,dx=34,y=1,dy=34,z=-17,dz=34]
 # team elimination checks
 execute if entity @e[type=minecraft:ender_dragon] run scoreboard players set dragonSeen variables 1
 execute if score enderDragonParticipates variables matches 1 if score dragonSeen variables matches 1 unless entity @e[type=minecraft:ender_dragon] run function usc:eliminate_team_glydia

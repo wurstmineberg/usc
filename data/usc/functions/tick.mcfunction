@@ -3,7 +3,6 @@
 scoreboard players add loadTimer variables 1
 scoreboard players add loadTimerModSec variables 1
 execute if score loadTimerModSec variables matches 20 run scoreboard players set loadTimerModSec variables 0
-execute if score started variables matches 2 run scoreboard players add gameTimer variables 1
 execute if score loadTimerModSec variables matches 0 run function usc:second
 # handle spectators
 scoreboard players enable @a[gamemode=adventure] spectate
