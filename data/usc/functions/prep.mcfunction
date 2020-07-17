@@ -1,6 +1,4 @@
 # preparations to run after op has been teleported into the box
-# update preparations progress sign
-setblock -16 27 -16 minecraft:birch_wall_sign[facing=north]{Text1:"{\"text\":\"\"}",Text2:"{\"text\":\"setting up…\"}",Text3:"{\"text\":\"ETA: 1 second\"}",Text4:"{\"text\":\"\"}"} replace
 # disable command block output because there's a lot of command blocks running periodically #TODO remove once everything has been ported to functions
 gamerule commandBlockOutput false
 # game settings #TODO these should probably be configurable
@@ -21,9 +19,11 @@ scoreboard objectives add health health
 scoreboard objectives setdisplay list health
 scoreboard objectives setdisplay belowName health
 scoreboard objectives add spectate trigger
-scoreboard objectives add variables dummy
 #TODO check whether this is still required or can be replaced by gamemode=Spectator checks
 scoreboard objectives add isSpectating dummy
+scoreboard objectives add variables dummy
+scoreboard players set enderDragonParticipates variables 0
+scoreboard players set showAdvancements variables 0
 # set up teams
 team add white
 team add gold
@@ -59,5 +59,5 @@ team modify red color red
 team modify black color black
 # open door to setup room
 fill -14 26 -17 -14 27 -17 minecraft:air
-# update preparations progress sign
-setblock -16 27 -16 minecraft:warped_wall_sign[facing=north]{Text1:"{\"text\":\"\"}",Text2:"{\"text\":\"Done.\"}",Text3:"{\"text\":\"\"}",Text4:"{\"text\":\"\"}"} replace
+# give op setup book
+function usc:book

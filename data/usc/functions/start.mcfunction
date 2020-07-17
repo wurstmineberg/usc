@@ -6,17 +6,17 @@ fill -18 32 -18 17 32 17 minecraft:air replace minecraft:lever
 # update game settings
 defaultgamemode spectator
 setidletimeout 20
+execute unless score showAdvancements variables matches 1 run gamerule announceAdvancements false
 # update scoreboard
 scoreboard objectives setdisplay sidebar respawnTimer
 # start fill clock #TODO move fill clock to functions
 setblock 16 22 10 minecraft:redstone_block
 # set players to Survival to scatter them
 gamemode survival @a[gamemode=adventure]
-# spawn End portal if playing against Ender dragon #TODO replace with a variable check for setup book compatibility
-execute if block -16 28 -3 minecraft:redstone_lamp[lit:true] run setblock 0 36 0 minecraft:structure_block[mode="load"]{mode:"LOAD",name:"usc:end_portal",ignoreEntities:1b}
-execute if block -16 28 -3 minecraft:redstone_lamp[lit:true] run setblock 0 37 0 minecraft:redstone_block
-execute if block -16 28 -3 minecraft:redstone_lamp[lit:true] run say The End portal is located at 0 38 0
-setblock -18 1 -18 minecraft:redstone_block
+# spawn End portal if playing against Ender dragon
+execute if score enderDragonParticipates variables matches 1 run setblock 0 36 0 minecraft:structure_block[mode="load"]{mode:"LOAD",name:"usc:end_portal",ignoreEntities:1b}
+execute if score enderDragonParticipates variables matches 1 run setblock 0 37 0 minecraft:redstone_block
+execute if score enderDragonParticipates variables matches 1 run say The End portal is located at 0 38 0
 # clear everyone's inventories
 clear @a
 # start game clock (will scatter players) #TODO move game clock to functions

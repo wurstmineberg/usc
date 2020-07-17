@@ -3,8 +3,6 @@
 # disable daylight and weather cycles (reenabled at game start)
 gamerule doDaylightCycle false
 gamerule doWeatherCycle false
-#TODO allow enabling announceAdvancements as a setup option
-gamerule announceAdvancements false
 defaultgamemode adventure
 #TODO move down once box has been reduced to lobby
 setworldspawn 0 31 0
