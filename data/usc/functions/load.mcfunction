@@ -6,4 +6,7 @@ gamerule doWeatherCycle false
 defaultgamemode adventure
 #TODO move down once box has been reduced to lobby
 setworldspawn 0 31 0
-#TODO forceload lobby (as long as it has command blocks), automatically run init, replace readme instruction to run init with a setup function that spawns the book
+# initialize variables objective (used in tick.mcfunction)
+scoreboard objectives add variables dummy
+scoreboard players set started variables 0
+#TODO forceload lobby, automatically run init, replace init in readme instruction with book

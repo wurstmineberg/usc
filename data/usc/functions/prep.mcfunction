@@ -20,12 +20,9 @@ scoreboard objectives setdisplay belowName health
 scoreboard objectives add spectate trigger
 #TODO check whether this is still required or can be replaced by gamemode=Spectator checks
 scoreboard objectives add isSpectating dummy
-scoreboard objectives add variables dummy
 scoreboard players set enderDragonParticipates variables 0
 scoreboard players set showAdvancements variables 0
-scoreboard players set started variables 0
 scoreboard players set gameTimer variables 0
-scoreboard players set gameTimerModSec variables 0
 # set up teams
 team add white
 team add gold
