@@ -11,3 +11,22 @@ scoreboard players reset @a[scores={minigameScore=0}] minigameScore
 # delete knockback swords outside the minigame
 clear @a[team=!] minecraft:netherite_sword
 kill @a[type=item,x=-18,dx=36,z=-18,dz=36,y=0,dy=36]
+# check if game should be started #TODO adjust coords once box has been reduced to lobby
+scoreboard players set allTeamsReady variables 1
+execute if entity @p[team=white] if block 3 32 -17 minecraft:redstone_lamp[lit=false] run scoreboard players set allTeamsReady variables 0
+execute if entity @p[team=gold] if block 9 32 -17 minecraft:redstone_lamp[lit=false] run scoreboard players set allTeamsReady variables 0
+execute if entity @p[team=light_purple] if block 16 32 -10 minecraft:redstone_lamp[lit=false] run scoreboard players set allTeamsReady variables 0
+execute if entity @p[team=aqua] if block 16 32 -4 minecraft:redstone_lamp[lit=false] run scoreboard players set allTeamsReady variables 0
+execute if entity @p[team=yellow] if block 16 32 3 minecraft:redstone_lamp[lit=false] run scoreboard players set allTeamsReady variables 0
+execute if entity @p[team=green] if block 16 32 9 minecraft:redstone_lamp[lit=false] run scoreboard players set allTeamsReady variables 0
+execute if entity @p[team=blue] if block 9 32 16 minecraft:redstone_lamp[lit=false] run scoreboard players set allTeamsReady variables 0
+execute if entity @p[team=dark_gray] if block 3 32 16 minecraft:redstone_lamp[lit=false] run scoreboard players set allTeamsReady variables 0
+execute if entity @p[team=gray] if block -4 32 16 minecraft:redstone_lamp[lit=false] run scoreboard players set allTeamsReady variables 0
+execute if entity @p[team=dark_aqua] if block -10 32 16 minecraft:redstone_lamp[lit=false] run scoreboard players set allTeamsReady variables 0
+execute if entity @p[team=dark_purple] if block -17 32 9 minecraft:redstone_lamp[lit=false] run scoreboard players set allTeamsReady variables 0
+execute if entity @p[team=dark_blue] if block -17 32 3 minecraft:redstone_lamp[lit=false] run scoreboard players set allTeamsReady variables 0
+execute if entity @p[team=dark_red] if block -17 32 -4 minecraft:redstone_lamp[lit=false] run scoreboard players set allTeamsReady variables 0
+execute if entity @p[team=dark_green] if block -17 32 -10 minecraft:redstone_lamp[lit=false] run scoreboard players set allTeamsReady variables 0
+execute if entity @p[team=red] if block -10 32 -17 minecraft:redstone_lamp[lit=false] run scoreboard players set allTeamsReady variables 0
+execute if entity @p[team=black] if block -4 32 -17 minecraft:redstone_lamp[lit=false] run scoreboard players set allTeamsReady variables 0
+execute if score startUnlocked variables matches 1 if score allTeamsReady variables matches 1 unless entity @p[gamemode=adventure,team=] run function usc:start

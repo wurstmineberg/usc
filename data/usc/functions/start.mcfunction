@@ -1,7 +1,7 @@
-# called from the command block at -3 11 8 when game start has been unlocked, there are no teamless non-spectating players, and all non-empty teams are ready
+# called from second_pregame.mcfunction when game start has been unlocked, there are no teamless non-spectating players, and all non-empty teams are ready
+scoreboard players set started variables 1
 say The game will start in a few seconds. Don't move…
-# disable pregame features #TODO move pregame clock to functions, adjust lobby coords after it's been moved down
-setblock 15 6 12 minecraft:redstone_block
+# remove ready levers #TODO adjust lobby coords after it's been moved down
 fill -18 32 -18 17 32 17 minecraft:air replace minecraft:lever
 # update game settings
 defaultgamemode spectator

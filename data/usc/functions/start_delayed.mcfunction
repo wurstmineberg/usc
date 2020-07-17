@@ -1,5 +1,5 @@
 # called from start.mcfunction with a 5-second delay to allow players to fall to the ground after being scattered
-scoreboard players set started variables 1
+scoreboard players set started variables 2
 # start daylight and weather cycles
 gamerule doDaylightCycle true
 gamerule doWeatherCycle true
