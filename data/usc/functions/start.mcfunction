@@ -9,10 +9,9 @@ setidletimeout 20
 execute unless score showAdvancements variables matches 1 run gamerule announceAdvancements false
 # update scoreboard
 scoreboard objectives setdisplay sidebar respawnTimer
-# start fill clock #TODO move fill clock to functions
-setblock 16 22 10 minecraft:redstone_block
-# set players to Survival to scatter them
+# set players to Survival and scatter them
 gamemode survival @a[gamemode=adventure]
+spreadplayers 0 0 400 1300 true @a[gamemode=survival]
 # spawn End portal if playing against Ender dragon
 execute if score enderDragonParticipates variables matches 1 run setblock 0 36 0 minecraft:structure_block[mode="load"]{mode:"LOAD",name:"usc:end_portal",ignoreEntities:1b}
 execute if score enderDragonParticipates variables matches 1 run setblock 0 37 0 minecraft:redstone_block

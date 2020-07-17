@@ -11,8 +11,7 @@ worldborder set 2901
 worldborder warning time 300
 # set up scoreboard
 scoreboard objectives add deathsInternal deathCount
-#TODO rework to start at 600 and count down once per second
-scoreboard objectives add respawnTimer dummy "respawn at 12000"
+scoreboard objectives add respawnTimer dummy "seconds until respawn"
 scoreboard objectives add minigameScore dummy "Golden Apple minigame"
 scoreboard objectives setdisplay sidebar minigameScore
 scoreboard objectives add health health
@@ -24,6 +23,9 @@ scoreboard objectives add isSpectating dummy
 scoreboard objectives add variables dummy
 scoreboard players set enderDragonParticipates variables 0
 scoreboard players set showAdvancements variables 0
+scoreboard players set started variables 0
+scoreboard players set gameTimer variables 0
+scoreboard players set gameTimerModSec variables 0
 # set up teams
 team add white
 team add gold
