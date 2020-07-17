@@ -23,6 +23,7 @@ scoreboard objectives add isSpectating dummy
 scoreboard players set enderDragonParticipates variables 0
 scoreboard players set showAdvancements variables 0
 scoreboard players set gameTimer variables 0
+scoreboard players set dragonSeen variables 0
 # set up teams
 team add white
 team add gold

@@ -9,6 +9,38 @@ setidletimeout 20
 execute unless score showAdvancements variables matches 1 run gamerule announceAdvancements false
 # update scoreboard
 scoreboard objectives setdisplay sidebar respawnTimer
+execute if entity @p[gamemode=survival,team=white] run scoreboard players set teamParticipatesWhite variables 1
+execute if entity @p[gamemode=survival,team=white] run scoreboard players add remainingTeams variables 1
+execute if entity @p[gamemode=survival,team=gold] run scoreboard players set teamParticipatesGold variables 1
+execute if entity @p[gamemode=survival,team=gold] run scoreboard players add remainingTeams variables 1
+execute if entity @p[gamemode=survival,team=light_purple] run scoreboard players set teamParticipatesLightPurple variables 1
+execute if entity @p[gamemode=survival,team=light_purple] run scoreboard players add remainingTeams variables 1
+execute if entity @p[gamemode=survival,team=aqua] run scoreboard players set teamParticipatesAqua variables 1
+execute if entity @p[gamemode=survival,team=aqua] run scoreboard players add remainingTeams variables 1
+execute if entity @p[gamemode=survival,team=yellow] run scoreboard players set teamParticipatesYellow variables 1
+execute if entity @p[gamemode=survival,team=yellow] run scoreboard players add remainingTeams variables 1
+execute if entity @p[gamemode=survival,team=green] run scoreboard players set teamParticipatesGreen variables 1
+execute if entity @p[gamemode=survival,team=green] run scoreboard players add remainingTeams variables 1
+execute if entity @p[gamemode=survival,team=blue] run scoreboard players set teamParticipatesBlue variables 1
+execute if entity @p[gamemode=survival,team=blue] run scoreboard players add remainingTeams variables 1
+execute if entity @p[gamemode=survival,team=dark_gray] run scoreboard players set teamParticipatesDarkGray variables 1
+execute if entity @p[gamemode=survival,team=dark_gray] run scoreboard players add remainingTeams variables 1
+execute if entity @p[gamemode=survival,team=gray] run scoreboard players set teamParticipatesGray variables 1
+execute if entity @p[gamemode=survival,team=gray] run scoreboard players add remainingTeams variables 1
+execute if entity @p[gamemode=survival,team=dark_aqua] run scoreboard players set teamParticipatesDarkAqua variables 1
+execute if entity @p[gamemode=survival,team=dark_aqua] run scoreboard players add remainingTeams variables 1
+execute if entity @p[gamemode=survival,team=dark_purple] run scoreboard players set teamParticipatesDarkPurple variables 1
+execute if entity @p[gamemode=survival,team=dark_purple] run scoreboard players add remainingTeams variables 1
+execute if entity @p[gamemode=survival,team=dark_blue] run scoreboard players set teamParticipatesDarkBlue variables 1
+execute if entity @p[gamemode=survival,team=dark_blue] run scoreboard players add remainingTeams variables 1
+execute if entity @p[gamemode=survival,team=dark_red] run scoreboard players set teamParticipatesDarkRed variables 1
+execute if entity @p[gamemode=survival,team=dark_red] run scoreboard players add remainingTeams variables 1
+execute if entity @p[gamemode=survival,team=dark_green] run scoreboard players set teamParticipatesDarkGreen variables 1
+execute if entity @p[gamemode=survival,team=dark_green] run scoreboard players add remainingTeams variables 1
+execute if entity @p[gamemode=survival,team=red] run scoreboard players set teamParticipatesRed variables 1
+execute if entity @p[gamemode=survival,team=red] run scoreboard players add remainingTeams variables 1
+execute if entity @p[gamemode=survival,team=black] run scoreboard players set teamParticipatesBlack variables 1
+execute if entity @p[gamemode=survival,team=black] run scoreboard players add remainingTeams variables 1
 # set players to Survival and scatter them
 gamemode survival @a[gamemode=adventure]
 spreadplayers 0 0 400 1300 true @a[gamemode=survival]
@@ -16,10 +48,9 @@ spreadplayers 0 0 400 1300 true @a[gamemode=survival]
 execute if score enderDragonParticipates variables matches 1 run setblock 0 36 0 minecraft:structure_block[mode="load"]{mode:"LOAD",name:"usc:end_portal",ignoreEntities:1b}
 execute if score enderDragonParticipates variables matches 1 run setblock 0 37 0 minecraft:redstone_block
 execute if score enderDragonParticipates variables matches 1 run say The End portal is located at 0 38 0
+execute if score enderDragonParticipates variables matches 1 run scoreboard players add remainingTeams variables 1
 # clear everyone's inventories
 clear @a
-# start game clock (will scatter players) #TODO move game clock to functions
-setblock 15 6 -1 minecraft:air
 # teleport everyone up as a workaround for the scatter bug #TODO make sure tp up happens after scatter
 execute as @a[gamemode=survival] at @s run teleport ~ 256 ~
 effect give @a[gamemode=survival] minecraft:absorption 222 222
