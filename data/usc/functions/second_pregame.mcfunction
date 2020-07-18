@@ -35,7 +35,7 @@ execute as @a[gamemode=adventure,team=] at @s if block ~ 199 ~ minecraft:white_s
 scoreboard players reset @a[scores={minigameScore=0}] minigameScore
 # delete knockback swords outside the minigame
 clear @a[team=!] minecraft:netherite_sword
-kill @a[type=item,x=-17,dx=34,y=199,dy=5,z=-17,dz=34]
+kill @e[type=item,x=-17,dx=34,y=199,dy=5,z=-17,dz=34]
 # check if game should be started #TODO move down with lobby
 scoreboard players set allTeamsReady variables 1
 execute if entity @p[team=white] if block 3 201 -17 minecraft:redstone_lamp[lit=false] run scoreboard players set allTeamsReady variables 0
