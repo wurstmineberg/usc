@@ -7,6 +7,7 @@ defaultgamemode adventure
 setworldspawn 0 200 0
 # initialize variables objective (used in tick.mcfunction)
 scoreboard objectives add variables dummy
+# 0=pregame, 1=starting, 2=game, 3=ended
 scoreboard players set started variables 0
 # forceload lobby
 forceload add -18 -18 17 17

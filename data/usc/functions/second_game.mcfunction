@@ -63,7 +63,7 @@ scoreboard players remove @a[gamemode=adventure] respawnTimer 1
 tellraw @a[scores={respawnTimer=599}] {"text":"","extra":[{"text":"[USC] If you died because of a player or while in the End, you're out of the game. In that case, click ","color":"gold"},{"text":"here","color":"gold","underlined":true,"clickEvent":{"action":"run_command","value":"/trigger spectate set 1"}},{"text":" to spectate.","color":"gold"}]}
 tellraw @a[scores={respawnTimer=540}] {"text":"","extra":[{"text":"[USC] Some suggestions while you're waiting:\n• Take a bathroom break\n• Grab some snacks\n• Remember to stay hydrated\n• Strategize\n• Hold ","color":"gold"},{"keybind":"key.playerlist","color":"gold"},{"text":" to watch players' health","color":"gold"}]}
 gamemode survival @a[scores={respawnTimer=0}]
-execute if entity @p[scores={respawnTimer=0}] run tellraw @a {"text":"","extra":[{"text":"[USC] ","color":"gold"},{"selector":"@a[scores={respawnTimer=0}]","color":"gold"},{"text":"respawned!","color":"gold"}]}
+execute if entity @p[scores={respawnTimer=0}] run tellraw @a {"text":"","extra":[{"text":"[USC] ","color":"gold"},{"selector":"@a[scores={respawnTimer=0}]"},{"text":" respawned!","color":"gold"}]}
 # update respawn radius to stay inside the world border
 execute if score gameTimer variables matches 0..1199 run spreadplayers 0 0 400 1300 true @a[scores={respawnTimer=0}]
 execute if score gameTimer variables matches 1200..2399 run spreadplayers 0 0 350 1150 true @a[scores={respawnTimer=0}]
@@ -157,3 +157,5 @@ execute if score teamParticipatesDarkRed variables matches 1 unless entity @p[te
 execute if score teamParticipatesDarkGreen variables matches 1 unless entity @p[team=dark_green,gamemode=survival,scores={health=1..}] run function usc:eliminate_team_dark_green
 execute if score teamParticipatesRed variables matches 1 unless entity @p[team=red,gamemode=survival,scores={health=1..}] run function usc:eliminate_team_red
 execute if score teamParticipatesBlack variables matches 1 unless entity @p[team=black,gamemode=survival,scores={health=1..}] run function usc:eliminate_team_black
+# gamemode-specific stuff
+execute if score teamsMode variables matches 3 run function usc:second_game_lafs

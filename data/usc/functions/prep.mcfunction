@@ -16,10 +16,15 @@ scoreboard objectives add health health
 scoreboard objectives setdisplay list health
 scoreboard objectives setdisplay belowName health
 scoreboard objectives add spectate trigger
+scoreboard objectives add lafsEligible dummy
+scoreboard objectives add lafsChosen dummy
+# 0=solo, 1=op-assigned teams, 2=self-assigned teams, 3=Love at First Sight
+scoreboard players set teamsMode variables 1
 scoreboard players set enderDragonParticipates variables 0
 scoreboard players set showAdvancements variables 0
 scoreboard players set gameTimer variables 0
 scoreboard players set dragonSeen variables 0
+scoreboard players set initializedTeams variables 0
 # set up teams
 team add white
 team add gold
