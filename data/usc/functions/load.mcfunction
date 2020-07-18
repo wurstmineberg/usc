@@ -9,7 +9,7 @@ setworldspawn 0 200 0
 scoreboard objectives add variables dummy
 scoreboard players set started variables 0
 # forceload lobby
-forceload -18 -18 17 17
+forceload add -18 -18 17 17
 # make sure the lobby is fully loaded before running preparations
 schedule function usc:place_lobby 1s
 schedule function usc:prep 2s
