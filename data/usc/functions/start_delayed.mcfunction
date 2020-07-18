@@ -11,7 +11,7 @@ effect clear @a[gamemode=survival]
 title @a times 0 100 80
 # damage and heal everyone to enable health display in player list
 effect give @a[gamemode=survival] minecraft:instant_damage
-effect give @a[gamemode=survival] minecraft:regeneration 6 6
+effect give @a[gamemode=survival] minecraft:regeneration 10 9
 # no-op teleport everyone for logging purposes
 execute as @a at @s run teleport ~ ~ ~
 # announce game start

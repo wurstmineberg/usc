@@ -1,10 +1,9 @@
 # called from second_pregame.mcfunction when game start has been unlocked, there are no teamless non-spectating players, and all non-empty teams are ready
 scoreboard players set started variables 1
 say The game will start in a few seconds. Don't move…
-# remove ready levers #TODO adjust lobby coords after it's been moved down
-fill -18 32 -18 17 32 17 minecraft:air replace minecraft:lever
 # update game settings
 defaultgamemode spectator
+setworldspawn 0 2 0
 setidletimeout 20
 execute unless score showAdvancements variables matches 1 run gamerule announceAdvancements false
 # update scoreboard
@@ -41,18 +40,25 @@ execute if entity @p[gamemode=survival,team=red] run scoreboard players set team
 execute if entity @p[gamemode=survival,team=red] run scoreboard players add remainingTeams variables 1
 execute if entity @p[gamemode=survival,team=black] run scoreboard players set teamParticipatesBlack variables 1
 execute if entity @p[gamemode=survival,team=black] run scoreboard players add remainingTeams variables 1
+# effects to force players to wait until game start
+effect give @a[gamemode=adventure] minecraft:blindness 10 9
+effect give @a[gamemode=adventure] minecraft:invisibility 10 9
+effect give @a[gamemode=adventure] minecraft:mining_fatigue 10 9
+effect give @a[gamemode=adventure] minecraft:slowness 10 9
+effect give @a[gamemode=adventure] minecraft:weakness 10 9
 # set players to Survival and scatter them
 gamemode survival @a[gamemode=adventure]
 spreadplayers 0 0 400 1300 true @a[gamemode=survival]
+# delete pregame lobby (in multiple steps to avoid item drops)
+fill -17 199 -17 16 203 16 minecraft:air replace minecraft:oak_wall_sign
+fill -17 199 -17 16 203 16 minecraft:air replace minecraft:lever
+fill -17 199 -17 16 203 16 minecraft:air
 # spawn End portal if playing against Ender dragon
-execute if score enderDragonParticipates variables matches 1 run setblock 0 36 0 minecraft:structure_block[mode="load"]{mode:"LOAD",name:"usc:end_portal",ignoreEntities:1b}
-execute if score enderDragonParticipates variables matches 1 run setblock 0 37 0 minecraft:redstone_block
-execute if score enderDragonParticipates variables matches 1 run say The End portal is located at 0 38 0
+execute if score enderDragonParticipates variables matches 1 run setblock 0 6 0 minecraft:structure_block[mode="load"]{mode:"LOAD",name:"usc:end_portal",ignoreEntities:1b,posX:-2,posY:0,posZ:-2}
+execute if score enderDragonParticipates variables matches 1 run setblock 0 7 0 minecraft:redstone_block
+execute if score enderDragonParticipates variables matches 1 run say The End portal is located at 0 9 0
 execute if score enderDragonParticipates variables matches 1 run scoreboard players add remainingTeams variables 1
 # clear everyone's inventories
 clear @a
-# teleport everyone up as a workaround for the scatter bug #TODO make sure tp up happens after scatter
-execute as @a[gamemode=survival] at @s run teleport ~ 256 ~
-effect give @a[gamemode=survival] minecraft:absorption 222 222
-# wait 5 seconds for players to fall before starting game timer and daylight/weather cycles
+# wait 5 seconds for chunks to load etc before starting game timer and daylight/weather cycles
 schedule function usc:start_delayed 5s

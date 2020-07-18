@@ -16,6 +16,6 @@ This is a [data pack](https://minecraft.gamepedia.com/Data_Pack) for [*Minecraft
 5. Start the server.
 6. Connect to the server.
 7. Give yourself operator access.
-8. From within Minecraft, run the [command](https://minecraft.gamepedia.com/Commands) `/function usc:init`.
+8. From within Minecraft, run the [command](https://minecraft.gamepedia.com/Commands) `/function usc:book`.
 9. You will receive a book which you can use to change game options, assign players to teams, and unlock the game start.
 10. Once you're done setting things up, you should [`/deop`](https://minecraft.gamepedia.com/Commands/deop) yourself to disable spawn protection.

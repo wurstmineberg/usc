@@ -60,23 +60,84 @@ scoreboard players set @a[scores={deathsInternal=1..,health=1..},gamemode=surviv
 gamemode adventure @a[scores={deathsInternal=1..,health=1..},gamemode=survival]
 scoreboard players set @a[gamemode=adventure] deathsInternal 0
 scoreboard players remove @a[gamemode=adventure] respawnTimer 1
-tellraw @a[scores={respawnTimer=599}] {"text":"","extra":[{"text":"[USC] If you died because of a player or while in the End, you're out of the game. In that case, click ","color":"gray"},{"text":"here","underlined":true,"clickEvent":{"action":"run_command","value":"/trigger spectate set 1"}},{"text":" to spectate.","color":"gray"}]}
-tellraw @a[scores={respawnTimer=540}] {"text":"","extra":[{"text":"[USC] Some suggestions while you're waiting:\n• Take a bathroom break\n• Grab some snacks\n• Remember to stay hydrated\n• Strategize\n• Hold ","color":"gray"},{"keybind":"key.playerlist","color":"gray"},{"text":" to watch players' health","color":"gray"}]}
+tellraw @a[scores={respawnTimer=599}] {"text":"","extra":[{"text":"[USC] If you died because of a player or while in the End, you're out of the game. In that case, click ","color":"gold"},{"text":"here","color":"gold","underlined":true,"clickEvent":{"action":"run_command","value":"/trigger spectate set 1"}},{"text":" to spectate.","color":"gold"}]}
+tellraw @a[scores={respawnTimer=540}] {"text":"","extra":[{"text":"[USC] Some suggestions while you're waiting:\n• Take a bathroom break\n• Grab some snacks\n• Remember to stay hydrated\n• Strategize\n• Hold ","color":"gold"},{"keybind":"key.playerlist","color":"gold"},{"text":" to watch players' health","color":"gold"}]}
 gamemode survival @a[scores={respawnTimer=0}]
 execute if entity @p[scores={respawnTimer=0}] run say @a[scores={respawnTimer=0}] respawned!
-scoreboard players reset @a[gamemode=spectator] respawnTimer
-scoreboard players reset @a[gamemode=survival] respawnTimer
 # update respawn radius to stay inside the world border
-execute if score gameTimer variables matches 0..1199 run spreadplayers 0 0 400 1300 true @a[gamemode=survival,x=-17,dx=34,y=1,dy=34,z=-17,dz=34]
-execute if score gameTimer variables matches 1200..2399 run spreadplayers 0 0 350 1150 true @a[gamemode=survival,x=-17,dx=34,y=1,dy=34,z=-17,dz=34]
-execute if score gameTimer variables matches 2400..3599 run spreadplayers 0 0 300 1000 true @a[gamemode=survival,x=-17,dx=34,y=1,dy=34,z=-17,dz=34]
-execute if score gameTimer variables matches 3600..4799 run spreadplayers 0 0 250 850 true @a[gamemode=survival,x=-17,dx=34,y=1,dy=34,z=-17,dz=34]
-execute if score gameTimer variables matches 4800..5999 run spreadplayers 0 0 200 700 true @a[gamemode=survival,x=-17,dx=34,y=1,dy=34,z=-17,dz=34]
-execute if score gameTimer variables matches 6000..7199 run spreadplayers 0 0 150 550 true @a[gamemode=survival,x=-17,dx=34,y=1,dy=34,z=-17,dz=34]
-execute if score gameTimer variables matches 7299..8399 run spreadplayers 0 0 100 400 true @a[gamemode=survival,x=-17,dx=34,y=1,dy=34,z=-17,dz=34]
-execute if score gameTimer variables matches 8400..9599 run spreadplayers 0 0 50 250 true @a[gamemode=survival,x=-17,dx=34,y=1,dy=34,z=-17,dz=34]
-execute if score gameTimer variables matches 9600..10799 run spreadplayers 0 0 25 150 true @a[gamemode=survival,x=-17,dx=34,y=1,dy=34,z=-17,dz=34]
-execute if score gameTimer variables matches 10800.. run spreadplayers 0 0 10 100 true @a[gamemode=survival,x=-17,dx=34,y=1,dy=34,z=-17,dz=34]
+execute if score gameTimer variables matches 0..1199 run spreadplayers 0 0 400 1300 true @a[scores={respawnTimer=0}]
+execute if score gameTimer variables matches 1200..2399 run spreadplayers 0 0 350 1150 true @a[scores={respawnTimer=0}]
+execute if score gameTimer variables matches 2400..3599 run spreadplayers 0 0 300 1000 true @a[scores={respawnTimer=0}]
+execute if score gameTimer variables matches 3600..4799 run spreadplayers 0 0 250 850 true @a[scores={respawnTimer=0}]
+execute if score gameTimer variables matches 4800..5999 run spreadplayers 0 0 200 700 true @a[scores={respawnTimer=0}]
+execute if score gameTimer variables matches 6000..7199 run spreadplayers 0 0 150 550 true @a[scores={respawnTimer=0}]
+execute if score gameTimer variables matches 7299..8399 run spreadplayers 0 0 100 400 true @a[scores={respawnTimer=0}]
+execute if score gameTimer variables matches 8400..9599 run spreadplayers 0 0 50 250 true @a[scores={respawnTimer=0}]
+execute if score gameTimer variables matches 9600..10799 run spreadplayers 0 0 25 150 true @a[scores={respawnTimer=0}]
+execute if score gameTimer variables matches 10800.. run spreadplayers 0 0 10 100 true @a[scores={respawnTimer=0}]
+# remove effects, reset health, and remove respawnTimer score after scattering
+effect clear @a[scores={respawnTimer=0}]
+effect give @a[scores={respawnTimer=0}] minecraft:instant_damage
+effect give @a[scores={respawnTimer=0}] minecraft:regeneration 10 9
+scoreboard players reset @a[gamemode=survival] respawnTimer
+scoreboard players reset @a[gamemode=spectator] respawnTimer
+# teleport players in Adventure mode to lobby
+teleport @a[x=-9999,dx=9981,gamemode=adventure] 0.0 2.0 0.0
+teleport @a[x=18,dx=9981,gamemode=adventure] 0.0 2.0 0.0
+teleport @a[y=7,dy=249,gamemode=adventure] 0.0 2.0 0.0
+teleport @a[z=-9999,dz=9981,gamemode=adventure] 0.0 2.0 0.0
+teleport @a[z=18,dz=9981,gamemode=adventure] 0.0 2.0 0.0
+# teleport players to their respective team lobby (or the golden apple minigame if teamless) #TODO disable in “players choose their own teams” mode
+execute as @a[gamemode=adventure,team=] at @s unless block ~ 1 ~ #usc:golden_apple_floor_game run teleport 0.0 2.0 0.0
+execute as @a[gamemode=adventure,team=white] at @s unless block ~ 1 ~ minecraft:white_terracotta run teleport 2 2.0 -15
+execute as @a[gamemode=adventure,team=gold] at @s unless block ~ 1 ~ minecraft:orange_terracotta run teleport 9 2.0 -14
+execute as @a[gamemode=adventure,team=light_purple] at @s unless block ~ 1 ~ minecraft:magenta_terracotta run teleport 13 2.0 -10
+execute as @a[gamemode=adventure,team=aqua] at @s unless block ~ 1 ~ minecraft:light_blue_terracotta run teleport 14 2.0 -3
+execute as @a[gamemode=adventure,team=yellow] at @s unless block ~ 1 ~ minecraft:yellow_terracotta run teleport 14 2.0 2
+execute as @a[gamemode=adventure,team=green] at @s unless block ~ 1 ~ minecraft:lime_terracotta run teleport 13 2.0 9
+execute as @a[gamemode=adventure,team=blue] at @s unless block ~ 1 ~ minecraft:lapis_block run teleport 9 2.0 13
+execute as @a[gamemode=adventure,team=dark_gray] at @s unless block ~ 1 ~ minecraft:gray_terracotta run teleport 2 2.0 14
+execute as @a[gamemode=adventure,team=gray] at @s unless block ~ 1 ~ minecraft:light_gray_terracotta run teleport -3 2.0 14
+execute as @a[gamemode=adventure,team=dark_aqua] at @s unless block ~ 1 ~ minecraft:cyan_terracotta run teleport -10 2.0 13
+execute as @a[gamemode=adventure,team=dark_purple] at @s unless block ~ 1 ~ minecraft:purple_terracotta run teleport -14 2.0 9
+execute as @a[gamemode=adventure,team=dark_blue] at @s unless block ~ 1 ~ minecraft:blue_terracotta run teleport -15 2.0 2
+execute as @a[gamemode=adventure,team=dark_red] at @s unless block ~ 1 ~ minecraft:brown_terracotta run teleport -15 2.0 -3
+execute as @a[gamemode=adventure,team=dark_green] at @s unless block ~ 1 ~ minecraft:green_terracotta run teleport -14 2.0 -10
+execute as @a[gamemode=adventure,team=red] at @s unless block ~ 1 ~ minecraft:red_terracotta run teleport -10 2.0 -14
+execute as @a[gamemode=adventure,team=black] at @s unless block ~ 1 ~ minecraft:black_terracotta run teleport -3 2.0 -15
+# set collar colors based on team
+execute as @e[type=wolf,team=white] run data modify entity @s CollarColor set value 0b
+execute as @e[type=wolf,team=gold] run data modify entity @s CollarColor set value 1b
+execute as @e[type=wolf,team=light_purple] run data modify entity @s CollarColor set value 2b
+execute as @e[type=wolf,team=aqua] run data modify entity @s CollarColor set value 3b
+execute as @e[type=wolf,team=yellow] run data modify entity @s CollarColor set value 4b
+execute as @e[type=wolf,team=green] run data modify entity @s CollarColor set value 5b
+execute as @e[type=wolf,team=blue] run data modify entity @s CollarColor set value 6b
+execute as @e[type=wolf,team=dark_gray] run data modify entity @s CollarColor set value 7b
+execute as @e[type=wolf,team=gray] run data modify entity @s CollarColor set value 8b
+execute as @e[type=wolf,team=dark_aqua] run data modify entity @s CollarColor set value 9b
+execute as @e[type=wolf,team=dark_purple] run data modify entity @s CollarColor set value 10b
+execute as @e[type=wolf,team=dark_blue] run data modify entity @s CollarColor set value 11b
+execute as @e[type=wolf,team=dark_red] run data modify entity @s CollarColor set value 12b
+execute as @e[type=wolf,team=dark_green] run data modify entity @s CollarColor set value 13b
+execute as @e[type=wolf,team=red] run data modify entity @s CollarColor set value 14b
+execute as @e[type=wolf,team=black] run data modify entity @s CollarColor set value 15b
+execute as @e[type=cat,team=white] run data modify entity @s CollarColor set value 0b
+execute as @e[type=cat,team=gold] run data modify entity @s CollarColor set value 1b
+execute as @e[type=cat,team=light_purple] run data modify entity @s CollarColor set value 2b
+execute as @e[type=cat,team=aqua] run data modify entity @s CollarColor set value 3b
+execute as @e[type=cat,team=yellow] run data modify entity @s CollarColor set value 4b
+execute as @e[type=cat,team=green] run data modify entity @s CollarColor set value 5b
+execute as @e[type=cat,team=blue] run data modify entity @s CollarColor set value 6b
+execute as @e[type=cat,team=dark_gray] run data modify entity @s CollarColor set value 7b
+execute as @e[type=cat,team=gray] run data modify entity @s CollarColor set value 8b
+execute as @e[type=cat,team=dark_aqua] run data modify entity @s CollarColor set value 9b
+execute as @e[type=cat,team=dark_purple] run data modify entity @s CollarColor set value 10b
+execute as @e[type=cat,team=dark_blue] run data modify entity @s CollarColor set value 11b
+execute as @e[type=cat,team=dark_red] run data modify entity @s CollarColor set value 12b
+execute as @e[type=cat,team=dark_green] run data modify entity @s CollarColor set value 13b
+execute as @e[type=cat,team=red] run data modify entity @s CollarColor set value 14b
+execute as @e[type=cat,team=black] run data modify entity @s CollarColor set value 15b
 # team elimination checks
 execute if entity @e[type=minecraft:ender_dragon] run scoreboard players set dragonSeen variables 1
 execute if score enderDragonParticipates variables matches 1 if score dragonSeen variables matches 1 unless entity @e[type=minecraft:ender_dragon] run function usc:eliminate_team_glydia

@@ -4,9 +4,12 @@
 gamerule doDaylightCycle false
 gamerule doWeatherCycle false
 defaultgamemode adventure
-#TODO move down with lobby
-setworldspawn 0 31 0
+setworldspawn 0 200 0
 # initialize variables objective (used in tick.mcfunction)
 scoreboard objectives add variables dummy
 scoreboard players set started variables 0
-#TODO forceload lobby, automatically run init, replace init in readme instruction with book
+# forceload lobby
+forceload -18 -18 17 17
+# make sure the lobby is fully loaded before running preparations
+schedule function usc:place_lobby 1s
+schedule function usc:prep 2s
