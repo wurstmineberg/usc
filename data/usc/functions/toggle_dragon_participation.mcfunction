@@ -3,5 +3,5 @@
 scoreboard players add enderDragonParticipates variables 1
 execute if score enderDragonParticipates variables matches 2 run scoreboard players set enderDragonParticipates variables 0
 # announce
-execute if score enderDragonParticipates variables matches 1 run say playing against Ender dragon
-execute unless score enderDragonParticipates variables matches 1 run say not playing against Ender dragon
+execute if score enderDragonParticipates variables matches 1 run tellraw @a {"text":"","extra":[{"text":"[USC] playing against Ender dragon","color":"gold"}]}
+execute unless score enderDragonParticipates variables matches 1 run tellraw @a {"text":"","extra":[{"text":"[USC] not playing against Ender dragon","color":"gold"}]}

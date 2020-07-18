@@ -6,55 +6,55 @@ execute if score gameTimerModTenMin variables matches 600 run scoreboard players
 execute if score gameTimerModTenMin variables matches 0 as @a at @s run teleport ~ ~ ~
 # world border
 execute if score gameTimer variables matches 600 run worldborder set 2601 600
-execute if score gameTimer variables matches 1200 run say MARK 1 DAY IN — border radius: 1300m
+execute if score gameTimer variables matches 1200 run tellraw @a {"text":"","extra":[{"text":"[USC] MARK 1 DAY IN — border radius: 1300m","color":"gold"}]}
 execute if score gameTimer variables matches 1200 run title @a subtitle {"color": "gold", "text": "border radius: 1300m"}
 execute if score gameTimer variables matches 1200 run title @a title {"text": "MARK 1 DAY IN"}
 execute if score gameTimer variables matches 1200 run worldborder set 2451 600
 execute if score gameTimer variables matches 1800 run worldborder set 2301 600
-execute if score gameTimer variables matches 2400 run say MARK 2 DAYS IN — border radius: 1150m
+execute if score gameTimer variables matches 2400 run tellraw @a {"text":"","extra":[{"text":"[USC] MARK 2 DAYS IN — border radius: 1150m","color":"gold"}]}
 execute if score gameTimer variables matches 2400 run title @a subtitle {"color": "gold", "text": "border radius: 1150m"}
 execute if score gameTimer variables matches 2400 run title @a title {"text": "MARK 2 DAYS IN"}
 execute if score gameTimer variables matches 2400 run worldborder set 2151 600
 execute if score gameTimer variables matches 3000 run worldborder set 2001 600
-execute if score gameTimer variables matches 3600 run say MARK 3 DAYS IN — border radius: 1000m
+execute if score gameTimer variables matches 3600 run tellraw @a {"text":"","extra":[{"text":"[USC] MARK 3 DAYS IN — border radius: 1000m","color":"gold"}]}
 execute if score gameTimer variables matches 3600 run title @a subtitle {"color": "gold", "text": "border radius: 1000m"}
 execute if score gameTimer variables matches 3600 run title @a title {"text": "MARK 3 DAYS IN"}
 execute if score gameTimer variables matches 3600 run worldborder set 1851 600
 execute if score gameTimer variables matches 4200 run worldborder set 1701 600
-execute if score gameTimer variables matches 4800 run say MARK 4 DAYS IN — border radius: 850m
+execute if score gameTimer variables matches 4800 run tellraw @a {"text":"","extra":[{"text":"[USC] MARK 4 DAYS IN — border radius: 850m","color":"gold"}]}
 execute if score gameTimer variables matches 4800 run title @a subtitle {"color": "gold", "text": "border radius: 850m"}
 execute if score gameTimer variables matches 4800 run title @a title {"text": "MARK 4 DAYS IN"}
 execute if score gameTimer variables matches 4800 run worldborder set 1551 600
 execute if score gameTimer variables matches 5400 run worldborder set 1401 600
-execute if score gameTimer variables matches 6000 run say MARK 5 DAYS IN — border radius: 700m
+execute if score gameTimer variables matches 6000 run tellraw @a {"text":"","extra":[{"text":"[USC] MARK 5 DAYS IN — border radius: 700m","color":"gold"}]}
 execute if score gameTimer variables matches 6000 run title @a subtitle {"color": "gold", "text": "border radius: 700m"}
 execute if score gameTimer variables matches 6000 run title @a title {"text": "MARK 5 DAYS IN"}
 execute if score gameTimer variables matches 6000 run worldborder set 1251 600
 execute if score gameTimer variables matches 6600 run worldborder set 1101 600
-execute if score gameTimer variables matches 7200 run say MARK 6 DAYS IN — border radius: 550m
+execute if score gameTimer variables matches 7200 run tellraw @a {"text":"","extra":[{"text":"[USC] MARK 6 DAYS IN — border radius: 550m","color":"gold"}]}
 execute if score gameTimer variables matches 7200 run title @a subtitle {"color": "gold", "text": "border radius: 550m"}
 execute if score gameTimer variables matches 7200 run title @a title {"text": "MARK 6 DAYS IN"}
 execute if score gameTimer variables matches 7200 run worldborder set 951 600
 execute if score gameTimer variables matches 7800 run worldborder set 801 600
-execute if score gameTimer variables matches 8400 run say MARK 7 DAYS IN — border radius: 400m
+execute if score gameTimer variables matches 8400 run tellraw @a {"text":"","extra":[{"text":"[USC] MARK 7 DAYS IN — border radius: 400m","color":"gold"}]}
 execute if score gameTimer variables matches 8400 run title @a subtitle {"color": "gold", "text": "border radius: 400m"}
 execute if score gameTimer variables matches 8400 run title @a title {"text": "MARK 7 DAYS IN"}
 execute if score gameTimer variables matches 8400 run worldborder set 651 600
 execute if score gameTimer variables matches 9000 run worldborder set 501 600
-execute if score gameTimer variables matches 9600 run say MARK 8 DAYS IN — border radius: 250m
+execute if score gameTimer variables matches 9600 run tellraw @a {"text":"","extra":[{"text":"[USC] MARK 8 DAYS IN — border radius: 250m","color":"gold"}]}
 execute if score gameTimer variables matches 9600 run title @a subtitle {"color": "gold", "text": "border radius: 250m"}
 execute if score gameTimer variables matches 9600 run title @a title {"text": "MARK 8 DAYS IN"}
 execute if score gameTimer variables matches 9600 run worldborder set 401 600
 execute if score gameTimer variables matches 10200 run worldborder set 301 600
-execute if score gameTimer variables matches 10800 run say MARK 9 DAYS IN — border radius: 150m
+execute if score gameTimer variables matches 10800 run tellraw @a {"text":"","extra":[{"text":"[USC] MARK 9 DAYS IN — border radius: 150m","color":"gold"}]}
 execute if score gameTimer variables matches 10800 run title @a subtitle {"color": "gold", "text": "border radius: 150m"}
 execute if score gameTimer variables matches 10800 run title @a title {"text": "MARK 9 DAYS IN"}
 execute if score gameTimer variables matches 10800 run worldborder set 251 600
 execute if score gameTimer variables matches 11400 run worldborder set 201 600
-execute if score gameTimer variables matches 12000 run say MARK 10 DAYS IN — border radius: 100m
+execute if score gameTimer variables matches 12000 run tellraw @a {"text":"","extra":[{"text":"[USC] MARK 10 DAYS IN — border radius: 100m","color":"gold"}]}
 execute if score gameTimer variables matches 12000 run title @a subtitle {"color": "gold", "text": "border radius: 100m"}
 execute if score gameTimer variables matches 12000 run title @a title {"text": "MARK 10 DAYS IN"}
-execute if score gameTimer variables matches 12000 run say The border has stopped moving.
+execute if score gameTimer variables matches 12000 run tellraw @a {"text":"","extra":[{"text":"[USC] The border has stopped moving.","color":"gold"}]}
 # respawn timer
 scoreboard players set @a[scores={deathsInternal=1..,health=1..},gamemode=survival] respawnTimer 600
 gamemode adventure @a[scores={deathsInternal=1..,health=1..},gamemode=survival]
@@ -63,7 +63,7 @@ scoreboard players remove @a[gamemode=adventure] respawnTimer 1
 tellraw @a[scores={respawnTimer=599}] {"text":"","extra":[{"text":"[USC] If you died because of a player or while in the End, you're out of the game. In that case, click ","color":"gold"},{"text":"here","color":"gold","underlined":true,"clickEvent":{"action":"run_command","value":"/trigger spectate set 1"}},{"text":" to spectate.","color":"gold"}]}
 tellraw @a[scores={respawnTimer=540}] {"text":"","extra":[{"text":"[USC] Some suggestions while you're waiting:\n• Take a bathroom break\n• Grab some snacks\n• Remember to stay hydrated\n• Strategize\n• Hold ","color":"gold"},{"keybind":"key.playerlist","color":"gold"},{"text":" to watch players' health","color":"gold"}]}
 gamemode survival @a[scores={respawnTimer=0}]
-execute if entity @p[scores={respawnTimer=0}] run say @a[scores={respawnTimer=0}] respawned!
+execute if entity @p[scores={respawnTimer=0}] run tellraw @a {"text":"","extra":[{"text":"[USC] ","color":"gold"},{"selector":"@a[scores={respawnTimer=0}]","color":"gold"},{"text":"respawned!","color":"gold"}]}
 # update respawn radius to stay inside the world border
 execute if score gameTimer variables matches 0..1199 run spreadplayers 0 0 400 1300 true @a[scores={respawnTimer=0}]
 execute if score gameTimer variables matches 1200..2399 run spreadplayers 0 0 350 1150 true @a[scores={respawnTimer=0}]

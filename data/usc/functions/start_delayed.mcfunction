@@ -15,7 +15,7 @@ effect give @a[gamemode=survival] minecraft:regeneration 10 9
 # no-op teleport everyone for logging purposes
 execute as @a at @s run teleport ~ ~ ~
 # announce game start
-say GAME STARTING NOW
+tellraw @a {"text":"","extra":[{"text":"[USC] GAME STARTING NOW","color":"gold"}]}
 title @a subtitle {"color": "gold", "text": "border radius: 1450m"}
 title @a title {"text": "Game Starting Now"}
 # start the worldborder
