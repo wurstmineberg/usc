@@ -1,4 +1,4 @@
-# preparations to run after op has been teleported into the box
+# preparations to run after op has been teleported into the lobby
 # disable command block output because there's a lot of command blocks running periodically #TODO remove once everything has been ported to functions
 gamerule commandBlockOutput false
 # game settings #TODO these should probably be configurable

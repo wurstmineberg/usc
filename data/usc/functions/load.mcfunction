@@ -4,7 +4,7 @@
 gamerule doDaylightCycle false
 gamerule doWeatherCycle false
 defaultgamemode adventure
-#TODO move down once box has been reduced to lobby
+#TODO move down with lobby
 setworldspawn 0 31 0
 # initialize variables objective (used in tick.mcfunction)
 scoreboard objectives add variables dummy

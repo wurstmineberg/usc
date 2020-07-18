@@ -11,7 +11,7 @@ scoreboard players reset @a[scores={minigameScore=0}] minigameScore
 # delete knockback swords outside the minigame
 clear @a[team=!] minecraft:netherite_sword
 kill @a[type=item,x=-18,dx=36,z=-18,dz=36,y=0,dy=36]
-# check if game should be started #TODO adjust coords once box has been reduced to lobby
+# check if game should be started #TODO move down with lobby
 scoreboard players set allTeamsReady variables 1
 execute if entity @p[team=white] if block 3 32 -17 minecraft:redstone_lamp[lit=false] run scoreboard players set allTeamsReady variables 0
 execute if entity @p[team=gold] if block 9 32 -17 minecraft:redstone_lamp[lit=false] run scoreboard players set allTeamsReady variables 0
