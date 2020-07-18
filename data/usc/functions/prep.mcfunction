@@ -3,6 +3,7 @@
 difficulty hard
 gamerule doImmediateRespawn true
 gamerule naturalRegeneration false
+gamerule spawnRadius 0
 # set up world border
 worldborder center 0 0
 worldborder set 2901

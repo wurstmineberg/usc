@@ -1,8 +1,14 @@
 # called from start.mcfunction with a 5-second delay to allow players to fall to the ground after being scattered
 scoreboard players set started variables 2
-# start daylight and weather cycles
+# reenable world updates
 gamerule doDaylightCycle true
+gamerule doFireTick true
+gamerule doInsomnia true
+gamerule doMobSpawning true
+gamerule doPatrolSpawning true
+gamerule doTraderSpawning true
 gamerule doWeatherCycle true
+gamerule randomTickSpeed 3
 # clear everyone's inventories again
 clear @a
 # clear game-start effects

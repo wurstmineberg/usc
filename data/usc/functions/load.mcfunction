@@ -1,8 +1,14 @@
 # automatically called each time the server is started
 #TODO to improve handling of server crashes, make sure these commands are only run once
-# disable daylight and weather cycles (reenabled at game start)
+# disable world updates (reenabled at game start)
 gamerule doDaylightCycle false
+gamerule doFireTick false
+gamerule doInsomnia false
+gamerule doMobSpawning false
+gamerule doPatrolSpawning false
+gamerule doTraderSpawning false
 gamerule doWeatherCycle false
+gamerule randomTickSpeed 0
 defaultgamemode adventure
 setworldspawn 0 200 0
 # initialize variables objective (used in tick.mcfunction)
