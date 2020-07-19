@@ -1,6 +1,7 @@
 # called by eliminate_team_*.mcfunction when only one team is remaining
 scoreboard players set started variables 3
 execute if score enderDragonParticipates variables matches 1 run tellraw @a {"text":"","extra":[{"text":"[USC] ","color":"gold"},{"text":"Team Glydia","color":"black"},{"text":" wins!","color":"gold"}]}
+execute if entity @p[team=,gamemode=survival,scores={health=1..}] run tellraw @a {"text":"","extra":[{"text":"[USC] ","color":"gold"},{"selector":"@p[team=,gamemode=survival,scores={health=1..}]"},{"text":" wins!","color":"gold"}]}
 execute if entity @p[team=white,gamemode=survival,scores={health=1..}] run tellraw @a {"text":"","extra":[{"text":"[USC] ","color":"gold"},{"text":"white team","color":"white"},{"text":" wins!","color":"gold"}]}
 execute if entity @p[team=gold,gamemode=survival,scores={health=1..}] run tellraw @a {"text":"","extra":[{"text":"[USC] ","color":"gold"},{"text":"gold team","color":"gold"},{"text":" wins!","color":"gold"}]}
 execute if entity @p[team=light_purple,gamemode=survival,scores={health=1..}] run tellraw @a {"text":"","extra":[{"text":"[USC] ","color":"gold"},{"text":"light_purple team","color":"light_purple"},{"text":" wins!","color":"gold"}]}
