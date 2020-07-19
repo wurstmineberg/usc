@@ -49,7 +49,8 @@ effect give @a[gamemode=adventure] minecraft:slowness 10 9
 effect give @a[gamemode=adventure] minecraft:weakness 10 9
 # set players to Survival and scatter them
 gamemode survival @a[gamemode=adventure]
-spreadplayers 0 0 400 1300 true @a[gamemode=survival]
+execute if score teamsMode variables matches 0..1 spreadplayers 0 0 400 1300 false @a[gamemode=survival]
+execute if score teamsMode variables matches 2..3 spreadplayers 0 0 400 1300 true @a[gamemode=survival]
 # delete pregame lobby (in multiple steps to avoid item drops)
 fill -17 199 -17 16 203 16 minecraft:air replace minecraft:oak_wall_sign
 fill -17 199 -17 16 203 16 minecraft:air replace minecraft:lever
