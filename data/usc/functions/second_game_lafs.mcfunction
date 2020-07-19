@@ -33,6 +33,7 @@ execute if score initializedTeams variables matches 14 run team join black @a[sc
 execute if entity @p[scores={lafsChosen=1},team=black] run tellraw @a {"text":"","extra":[{"text":"[USC] ","color":"gold"},{"selector":"@a[scores={lafsChosen=1},team=black]"},{"text":" have formed the ","color":"gold"},{"text":"black team","color":"black"},{"text":"!","color":"gold"}]}
 execute if score initializedTeams variables matches 15 run team join white @a[scores={lafsChosen=1}]
 execute if entity @p[scores={lafsChosen=1},team=white] run tellraw @a {"text":"","extra":[{"text":"[USC] ","color":"gold"},{"selector":"@a[scores={lafsChosen=1},team=white]"},{"text":" have formed the ","color":"gold"},{"text":"white team","color":"white"},{"text":"!","color":"gold"}]}
+execute if entity @p[scores={lafsChosen=1}] run scoreboard players remove remainingTeams variables 1
 execute if entity @p[scores={lafsChosen=1}] run scoreboard players add initializedTeams variables 1
 scoreboard players set @a lafsEligible 0
 scoreboard players set @a lafsChosen 0

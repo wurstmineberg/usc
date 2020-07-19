@@ -8,6 +8,7 @@ setidletimeout 20
 execute unless score showAdvancements variables matches 1 run gamerule announceAdvancements false
 # update scoreboard
 scoreboard objectives setdisplay sidebar respawnTimer
+execute as @a[gamemode=adventure,team=] run scoreboard players add remainingTeams variables 1
 execute if entity @p[gamemode=adventure,team=white] run scoreboard players set teamParticipatesWhite variables 1
 execute if entity @p[gamemode=adventure,team=white] run scoreboard players add remainingTeams variables 1
 execute if entity @p[gamemode=adventure,team=gold] run scoreboard players set teamParticipatesGold variables 1

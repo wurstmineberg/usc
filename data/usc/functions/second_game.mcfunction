@@ -56,8 +56,11 @@ execute if score gameTimer variables matches 12000 run title @a subtitle {"color
 execute if score gameTimer variables matches 12000 run title @a title {"text": "MARK 10 DAYS IN"}
 execute if score gameTimer variables matches 12000 run tellraw @a {"text":"","extra":[{"text":"[USC] The border has stopped moving.","color":"gold"}]}
 # respawn timer
-scoreboard players set @a[scores={deathsInternal=1..,health=1..},gamemode=survival] respawnTimer 600
-gamemode adventure @a[scores={deathsInternal=1..,health=1..},gamemode=survival]
+execute as @a[scores={deathsInternal=1..,health=1..},gamemode=survival,team=] run scoreboard players remove remainingTeams variables 1
+scoreboard players set @a[scores={deathsInternal=1..,health=1..},gamemode=survival,team=] spectate 1
+scoreboard players set @a[scores={spectate=1}] deathsInternal 0
+scoreboard players set @a[scores={deathsInternal=1..,health=1..},gamemode=survival,team=!] respawnTimer 600
+gamemode adventure @a[scores={deathsInternal=1..,health=1..},gamemode=survival,team=]
 scoreboard players set @a[gamemode=adventure] deathsInternal 0
 scoreboard players remove @a[gamemode=adventure] respawnTimer 1
 tellraw @a[scores={respawnTimer=599}] {"text":"","extra":[{"text":"[USC] If you died because of a player or while in the End, you're out of the game. In that case, click ","color":"gold"},{"text":"here","color":"gold","underlined":true,"clickEvent":{"action":"run_command","value":"/trigger spectate set 1"}},{"text":" to spectate.","color":"gold"}]}
@@ -138,7 +141,7 @@ execute as @e[type=cat,team=dark_red] run data modify entity @s CollarColor set 
 execute as @e[type=cat,team=dark_green] run data modify entity @s CollarColor set value 13b
 execute as @e[type=cat,team=red] run data modify entity @s CollarColor set value 14b
 execute as @e[type=cat,team=black] run data modify entity @s CollarColor set value 15b
-# team elimination checks
+# team elimination and game end checks
 execute if entity @e[type=minecraft:ender_dragon] run scoreboard players set dragonSeen variables 1
 execute if score enderDragonParticipates variables matches 1 if score dragonSeen variables matches 1 unless entity @e[type=minecraft:ender_dragon] run function usc:eliminate_team_glydia
 execute if score teamParticipatesWhite variables matches 1 unless entity @p[team=white,gamemode=survival,scores={health=1..}] run function usc:eliminate_team_white
@@ -157,5 +160,6 @@ execute if score teamParticipatesDarkRed variables matches 1 unless entity @p[te
 execute if score teamParticipatesDarkGreen variables matches 1 unless entity @p[team=dark_green,gamemode=survival,scores={health=1..}] run function usc:eliminate_team_dark_green
 execute if score teamParticipatesRed variables matches 1 unless entity @p[team=red,gamemode=survival,scores={health=1..}] run function usc:eliminate_team_red
 execute if score teamParticipatesBlack variables matches 1 unless entity @p[team=black,gamemode=survival,scores={health=1..}] run function usc:eliminate_team_black
+execute if score remainingTeams variables matches 1 run function usc:end
 # gamemode-specific stuff
-execute if score teamsMode variables matches 3 run function usc:second_game_lafs
+execute if score teamsMode variables matches 1 run function usc:second_game_lafs
