@@ -1,5 +1,5 @@
 # Runs once every second but only before game start
-execute unless score teamsMode variables matches 3 run function usc:second_pregame_selfassign
+execute if score teamsMode variables matches 3 run function usc:second_pregame_selfassign
 execute unless score teamsMode variables matches 3 run function usc:second_pregame_walled
 # teleport players in Adventure mode to lobby
 teleport @a[x=-9999,dx=9982,gamemode=adventure] 0.0 200.0 0.0
