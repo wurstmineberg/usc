@@ -63,6 +63,7 @@ scoreboard players set @a[scores={spectate=1}] deathsInternal 0
 scoreboard players set @a[scores={deathsInternal=1..,health=1..},gamemode=survival,team=!] respawnTimer 600
 gamemode adventure @a[scores={deathsInternal=1..,health=1..},gamemode=survival,team=!]
 scoreboard players set @a[gamemode=adventure] deathsInternal 0
+scoreboard players reset @a[gamemode=spectator] respawnTimer
 scoreboard players remove @a[gamemode=adventure] respawnTimer 1
 tellraw @a[scores={respawnTimer=599}] {"text":"","extra":[{"text":"[USC] If you died because of a player or while in the End, you're out of the game. In that case, click ","color":"gold"},{"text":"here","color":"gold","underlined":true,"clickEvent":{"action":"run_command","value":"/trigger spectate set 1"}},{"text":" to spectate.","color":"gold"}]}
 tellraw @a[scores={respawnTimer=540}] {"text":"","extra":[{"text":"[USC] Some suggestions while you're waiting:\n• Take a bathroom break\n• Grab some snacks\n• Remember to stay hydrated\n• Strategize\n• Hold ","color":"gold"},{"keybind":"key.playerlist","color":"gold"},{"text":" to watch players' health","color":"gold"}]}
@@ -84,7 +85,6 @@ effect clear @a[scores={respawnTimer=0}]
 effect give @a[scores={respawnTimer=0}] minecraft:instant_damage
 effect give @a[scores={respawnTimer=0}] minecraft:regeneration 10 9
 scoreboard players reset @a[gamemode=survival] respawnTimer
-scoreboard players reset @a[gamemode=spectator] respawnTimer
 # teleport players in Adventure mode to lobby
 teleport @a[x=-9999,dx=9981,gamemode=adventure] 0.0 2.0 0.0
 teleport @a[x=18,dx=9981,gamemode=adventure] 0.0 2.0 0.0
