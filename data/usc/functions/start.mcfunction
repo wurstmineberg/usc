@@ -57,7 +57,6 @@ fill -17 199 -17 16 203 16 minecraft:air
 # spawn End portal if playing against Ender dragon
 execute if score enderDragonParticipates variables matches 1 run setblock 0 6 0 minecraft:structure_block[mode="load"]{mode:"LOAD",name:"usc:end_portal",ignoreEntities:1b,posX:-2,posY:0,posZ:-2}
 execute if score enderDragonParticipates variables matches 1 run setblock 0 7 0 minecraft:redstone_block
-execute if score enderDragonParticipates variables matches 1 run tellraw @a {"text":"","extra":[{"text":"[USC] The End portal is located at 0 9 0","color":"gold"}]}
 execute if score enderDragonParticipates variables matches 1 run scoreboard players add remainingTeams variables 1
 # clear everyone's inventories
 clear @a

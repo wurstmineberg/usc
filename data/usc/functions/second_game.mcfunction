@@ -5,6 +5,7 @@ execute if score gameTimerModTenMin variables matches 600 run scoreboard players
 # every 10 minutes, no-op teleport everyone for logging purposes
 execute if score gameTimerModTenMin variables matches 0 as @a at @s run teleport ~ ~ ~
 # world border
+execute if score gameTimer variables matches 300 if score enderDragonParticipates variables matches 1 run tellraw @a {"text":"","extra":[{"text":"[USC] an End portal with 4 missing eyes is located at 0 9 0","color":"gold"}]}
 execute if score gameTimer variables matches 600 run worldborder set 2601 600
 execute if score gameTimer variables matches 1200 run tellraw @a {"text":"","extra":[{"text":"[USC] MARK 1 DAY IN — border radius: 1300m","color":"gold"}]}
 execute if score gameTimer variables matches 1200 run title @a subtitle {"color": "gold", "text": "border radius: 1300m"}
@@ -60,7 +61,7 @@ execute as @a[scores={deathsInternal=1..,health=1..},gamemode=survival,team=] ru
 scoreboard players set @a[scores={deathsInternal=1..,health=1..},gamemode=survival,team=] spectate 1
 scoreboard players set @a[scores={spectate=1}] deathsInternal 0
 scoreboard players set @a[scores={deathsInternal=1..,health=1..},gamemode=survival,team=!] respawnTimer 600
-gamemode adventure @a[scores={deathsInternal=1..,health=1..},gamemode=survival,team=]
+gamemode adventure @a[scores={deathsInternal=1..,health=1..},gamemode=survival,team=!]
 scoreboard players set @a[gamemode=adventure] deathsInternal 0
 scoreboard players remove @a[gamemode=adventure] respawnTimer 1
 tellraw @a[scores={respawnTimer=599}] {"text":"","extra":[{"text":"[USC] If you died because of a player or while in the End, you're out of the game. In that case, click ","color":"gold"},{"text":"here","color":"gold","underlined":true,"clickEvent":{"action":"run_command","value":"/trigger spectate set 1"}},{"text":" to spectate.","color":"gold"}]}
