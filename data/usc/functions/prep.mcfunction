@@ -5,8 +5,8 @@ gamerule doImmediateRespawn true
 gamerule naturalRegeneration false
 gamerule spawnRadius 0
 # set up world border
-worldborder center 0 0
-worldborder set 2901
+worldborder center -5451 117
+worldborder set 69624
 worldborder warning time 300
 # set up scoreboard
 scoreboard objectives add deathsInternal deathCount

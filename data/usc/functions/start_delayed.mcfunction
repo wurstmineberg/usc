@@ -22,7 +22,7 @@ effect give @a[gamemode=survival] minecraft:regeneration 10 9
 execute as @a at @s run teleport ~ ~ ~
 # announce game start
 tellraw @a {"text":"","extra":[{"text":"[USC] GAME STARTING NOW","color":"gold"}]}
-title @a subtitle {"color": "gold", "text": "border radius: 1450m"}
+title @a subtitle {"color": "gold", "text": "border radius: 34800m"}
 title @a title {"text": "Game Starting Now"}
 # start the worldborder
-worldborder set 2751 600
+worldborder set 66024 600
